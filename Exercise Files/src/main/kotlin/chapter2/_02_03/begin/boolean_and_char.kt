@@ -12,7 +12,8 @@ fun secondOperand(): Boolean {
 
 fun main() {
     demoBoolean()
-//    demoChar()
+    println()
+    demoChar()
 }
 
 private fun demoBoolean() {
