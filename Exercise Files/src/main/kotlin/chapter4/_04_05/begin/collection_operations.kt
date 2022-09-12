@@ -20,6 +20,13 @@ fun main() {
     val paragraphNoSpecialChar: String = paragraph.replace("[-+.^:,]".toRegex(), "")
 
     // TODO continuar acá, ver curso regex
+    val myRegex = "[^pedro pedro$]".toRegex()
+    val myString = "pedro 123 pedro"
+    println("regex evaluation: ${myString.matches(myRegex)}")
+
+    // TODO ver ejemplos de esta página https://www.baeldung.com/kotlin/regular-expressions
+
+    println("toRegex: ${"[-+.^:,]".toRegex()}")
 
     val splitted = paragraphNoSpecialChar.split(" ")
 
