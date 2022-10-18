@@ -1,4 +1,4 @@
-package chapter4._04_07.begin
+package chapter4.`_04_07 challenge_remove_duplicates`.begin
 
 fun main() {
     val animals =
