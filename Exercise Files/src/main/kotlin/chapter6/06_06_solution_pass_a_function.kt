@@ -1,11 +1,11 @@
-package chapter6._06_06.begin
+package chapter6 // ktlint-disable filename
 
-fun replicate(func: (Int, String) -> Unit) {
+fun replicateSolution(func: (Int, String) -> Unit) {
     func(5, "Be Cool.")
 }
 
 fun main() {
-    replicate { count, msg ->
+    replicateSolution { count, msg ->
         for (ndx in 1..count)
             println(msg)
     }

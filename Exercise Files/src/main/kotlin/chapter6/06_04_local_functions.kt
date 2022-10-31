@@ -1,15 +1,20 @@
-package chapter6._06_04.begin
+package chapter6 // ktlint-disable filename
 
 fun main() {
     val words = listOf("racecar", "civic", "level", "butter")
+    words.forEach() {
+        if (isPalindrome(it)) {
+            println("$it is palindrome")
+        } else println("$it is not palindrome")
+    }
 }
 
 fun isPalindrome(word: String): Boolean {
-    fun doCharsMatch(front: Int, back: Int): Boolean {
-        if (front >= back) return true
-        if (word[front].toUpperCase() != word[back].toUpperCase()) return false
-        return doCharsMatch(front + 1, back - 1)
+    fun charsMatch(left: Int, right: Int): Boolean {
+        if (right <= left) return true
+        return if (word[left].equals(word[right], ignoreCase = true)) charsMatch(left + 1, right - 1)
+        else false
     }
     if (word.length < 2) return true
-    return doCharsMatch(0, word.lastIndex)
+    return charsMatch(0, word.lastIndex)
 }
