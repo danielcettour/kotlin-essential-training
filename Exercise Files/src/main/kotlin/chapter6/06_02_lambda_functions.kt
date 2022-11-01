@@ -1,4 +1,4 @@
-package chapter6
+package chapter6 // ktlint-disable filename
 
 fun main() {
     val lam: (Int, Int) -> Int = { a: Int, b: Int -> a + b }
