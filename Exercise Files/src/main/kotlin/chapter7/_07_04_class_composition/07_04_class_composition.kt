@@ -1,19 +1,30 @@
 package chapter7 // ktlint-disable filename
 
 // =========================================================
+// STEP 1
+// =========================================================
+/**
+ * should be abstract */
+// class Person(val firstName: String, val ssn: String) {
+//     fun getName(): String
+// }
+
+// =========================================================
 // STEP 2
 // =========================================================
-abstract class Person1(val firstName: String, val ssn: String) {
+/**
+ * Person 1 is abstract because we never intantiate it. It has an abstract function
+ */
+abstract class Person(val firstName: String, val ssn: String) {
     abstract fun getName(): String
 }
 
-class Employee(
+/*class Employee(
     firstName: String,
-    ssn: String,
+    ssn: String, // social security number
     val jobTitle: String,
     val hourlyRate: Double
-) :
-    Person1(firstName, ssn) {
+) : Person(firstName, ssn) {
 
     var totalHours = 0.0
 
@@ -31,23 +42,28 @@ class Employee(
 }
 
 fun main() {
-    val hourly = Employee("abel", "111-22-3333", "bit wrangler", 42.42)
+    val hourly = Employee("Abel", "111-22-3333", "bit wrangler", 42.42)
     println("My name is ${hourly.getName()}")
     hourly.doWork()
 }
+*//*
+output:
+My name is Abel
+Doing bit wrangler work
+ */
 
-/*
-
-//=========================================================
+// =========================================================
 // STEP 3
-//=========================================================
+// =========================================================
+/**
+ * now we need a salaried employee
+ */
 open class Employee(
     firstName: String,
     ssn: String,
     val jobTitle: String,
     val hourlyRate: Double
-) :
-    Person(firstName, ssn) {
+) : Person(firstName, ssn) {
 
     var totalHours = 0.0
 
@@ -64,6 +80,11 @@ open class Employee(
     }
 }
 
+/**
+ * here, Salaried employee inherits from Employee, and Employee inherits from Person
+ * class Salaried inherits a lot of code it doesn't use, this is a flaw in inheritance
+ */
+
 class Salaried(
     firstName: String,
     ssn: String,
@@ -73,19 +94,26 @@ class Salaried(
     firstName,
     ssn,
     jobTitle,
-    0.0
+    0.0 // 0.0 for salaried employees
 ) {}
 
 fun main() {
-    val hourly = Employee("abel", "111-22-3333", "bit wrangler", 42.42)
+    val hourly = Employee("Abel", "111-22-3333", "bit wrangler", 42.42)
     println("My name is ${hourly.getName()}")
     hourly.doWork()
 
-    val salaried = Salaried("beth", "222-33-4444", "program manager", 12500.0)
+    val salaried = Salaried("Beth", "222-33-4444", "program manager", 12500.0)
     println("My name is ${salaried.getName()}")
     salaried.doWork()
+    /*
+    output:
+    My name is Abel
+            Doing bit wrangler work
+            My name is Beth
+            Doing program manager work*/
 }
 
+/*
 //=========================================================
 // STEP 4 replaces everything
 //=========================================================

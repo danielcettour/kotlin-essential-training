@@ -1,13 +1,13 @@
-package chapter3._03_05
+package chapter3 // ktlint-disable filename
 
-data class Person(var firstName: String, var lastName: String)
+data class SomePerson(var firstName: String, var lastName: String)
 
 fun main() {
     /**
      * only nullable types can hold a null
      */
     // val person1: Person = null  ->  compile time error
-    val person1: Person? = null
+    val person1: SomePerson? = null
 
     val greeting: String? = "Hello there"
 
