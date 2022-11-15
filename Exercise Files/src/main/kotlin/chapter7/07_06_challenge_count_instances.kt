@@ -1,6 +1,19 @@
-package chapter7._07_06.begin
+package chapter7 // ktlint-disable filename
 
 class Bosco {
+    /*constructor() {
+        numberOfInstances++
+    }*/
+    init {
+        numberOfInstances++ // see instructor solution
+    }
+    companion object {
+        var numberOfInstances = 0
+
+        fun show() {
+            println("$numberOfInstances instances")
+        }
+    }
 }
 
 fun nop() {
@@ -12,5 +25,5 @@ fun main() {
     val b2 = Bosco()
     nop()
     val b3 = Bosco()
-//    Bosco.show()
+    Bosco.show()
 }
