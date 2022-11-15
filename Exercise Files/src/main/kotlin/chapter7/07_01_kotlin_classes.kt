@@ -21,9 +21,9 @@ class CourseProperty(courseTitle: String) {
 }
 
 /*
-parameter fistName is a property, lastName is a parameter but not a property, age is mutable
+parameter firstName is a property, lastName is a parameter but not a property, age is mutable
  */
-class Person(val firstName: String, lastName: String, var age: Int) {}
+class Partner(val firstName: String, lastName: String, var age: Int) {}
 
 // internal val and get() function
 class Course(courseTitle: String) {
