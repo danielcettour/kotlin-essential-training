@@ -1,4 +1,4 @@
-package chapter8._08_02.begin
+package chapter8 // ktlint-disable filename
 
 fun main() {
     val names = mutableListOf<String>()
@@ -17,6 +17,11 @@ fun main() {
     print("\nEnter first integer: ")
     val string1 = readLine() ?: ""
     val integer1: Int = string1.toIntOrNull() ?: 0
+
+    /*
+    right click in console, click "set value", value can be changed
+    F9 to resume, go back to console (bottom tab Debug, and then upper tab Console)
+     */
 
     print("\nEnter second integer: ")
     val string2 = readLine() ?: ""
