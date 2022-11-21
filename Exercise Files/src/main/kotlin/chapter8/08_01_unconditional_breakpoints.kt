@@ -1,12 +1,16 @@
-package chapter8._08_01.begin
+package chapter8 // ktlint-disable filename
 
 fun main() {
     val names = mutableListOf<String>()
     do {
         print("Enter a name (empty to end): ")
-        val input = readLine()
+        val input = readLine() // read line typed by user and store it in input val
         if (input.isNullOrEmpty()) break
         names.add(input)
+        /*
+        conditional breakpoint: right click on breakpoint, write condition
+        see also: remove once hit, pass count, etc
+         */
     } while (true)
 
     println("\nWe have ${names.size} names")
@@ -15,7 +19,7 @@ fun main() {
     }
 
     print("\nEnter first integer: ")
-    val string1 = readLine() ?: ""
+    val string1 = readLine() ?: "" // Elvis operator
     val integer1: Int = string1.toIntOrNull() ?: 0
 
     print("\nEnter second integer: ")
