@@ -1,4 +1,4 @@
-package chapter9._09_04.begin
+package chapter9 // ktlint-disable filename
 
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -8,12 +8,13 @@ fun main() {
     reader()
 }
 
-fun reader() = runBlocking{
-    val d1 = async { readFile("the_whale.txt")}
-    d1.await().forEach { println(it)}
+fun reader() = runBlocking {
+    val d1 = async { readFile("the_whale.txt") }
+    d1.await().forEach { println(it) }
 }
 
 fun readFile(fileName: String): List<String> {
-    val file = File("./resources/$fileName")
+    val res = "C:\\Users\\Daniel\\Desktop\\Cursos kotlin\\01 - kotlin essentials - linkedin learning\\Exercise Files\\resources"
+    val file = File("$res/$fileName")
     return file.readLines()
 }
