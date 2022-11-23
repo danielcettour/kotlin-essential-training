@@ -1,27 +1,33 @@
-package chapter9._09_02.begin
+package chapter9 // ktlint-disable filename
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.* // ktlint-disable no-wildcard-imports
 import kotlin.system.measureTimeMillis
 
 fun main() {
     val time = measureTimeMillis {
-        timeOut()
+        // timeOut()
+        cancel()
     }
     println("$time ms")
 }
 
-suspend fun longCalc(startNum: Int): Int {
+suspend fun longCalc2(startNum: Int): Int {
     delay(1000)
     return startNum + 1
 }
 
 fun timeOut() = runBlocking {
     println("async/await beginning")
-    val x1 = async { longCalc(100) }
-    val x2 = async { longCalc(200) }
-    val x3 = async { longCalc(300) }
-    val sum1 = listOf(x1, x2, x3).awaitAll().sum()
-    println("async/await results = $sum1")
+    val results = withTimeoutOrNull(1000L) {
+        val x1 = async { longCalc2(100) }
+        val x2 = async { longCalc2(200) }
+        val x3 = async { longCalc2(300) }
+        val sum1 = listOf(x1, x2, x3).awaitAll().sum()
+        println("async/await results = $sum1")
+        "finished"
+    } ?: "timed out"
+
+    println("results: $results")
 }
 
 fun cancel() = runBlocking {
@@ -35,8 +41,11 @@ fun cancel() = runBlocking {
                 i++
             }
         }
+        println("cancelled job! isActive is false")
     }
-    delay(1000L)
-    job.cancelAndJoin()
+    // the above loop is still running in the coroutine
+    delay(3000L) // this will loop for three seconds after cancelAndJoin is called
+    println("cancelling job")
+    job.cancelAndJoin() // isActive will be set to false
     println("done")
 }
